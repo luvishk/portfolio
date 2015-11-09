@@ -39,6 +39,32 @@ $(document).ready(function() {
       });
     });
     
+    $(window).resize(function(){
+
+    var nav = $('.js--main-nav');
+
+    var icon = $('.js--nav-icon i');
+
+    if ($(window).width() > 767){
+
+    nav.css("display", "block");
+
+    icon.addClass('ion-close-round');
+
+    icon.removeClass('ion-navicon-round');
+
+    } else {
+
+    nav.css("display", "none");
+
+    icon.addClass('ion-navicon-round');
+
+    icon.removeClass('ion-close-round');
+
+    }
+
+    });
+    
     
     /* Animations on scroll */
     $('.js--wp-1').waypoint(function(direction) {
@@ -83,9 +109,23 @@ $(document).ready(function() {
     });
     
     /* Maps */
-    new GMaps({
+    var map = new GMaps({
         div: '.map',
-        lat: 37.3526628,
-        lng: -122.0655421
+        lat: 37.3689884,
+        lng: -121.95,
+        zoom: 12
     });
+    
+    /* Marker */
+    map.addMarker({
+      lat: 37.3689884,
+      lng: -122.0360559,
+      title: 'Sunnyvale, CA',
+      infoWindow: {
+          content: '<p>Current Location</p>'
+      }
+    });
+    
+    
+    
 });
